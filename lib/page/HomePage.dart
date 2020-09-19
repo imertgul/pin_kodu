@@ -1,0 +1,109 @@
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import '../utilities/constant.dart';
+
+class MyHomePage extends StatefulWidget {
+  MyHomePage({Key key, this.title}) : super(key: key);
+
+  final String title;
+
+  @override
+  _MyHomePageState createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  final myController = TextEditingController();
+
+  @override
+  void dispose() {
+    // Clean up the controller when the widget is disposed.
+    myController.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: SafeArea(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            _buildTitle(widget.title),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "Lütfen Doğum tarihinizi giriniz",
+                style: myStyle15,
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                _buildInput(context, 0),
+                _buildInput(context, 1),
+                SizedBox(width: 5),
+                _buildInput(context, 2),
+                _buildInput(context, 3),
+                SizedBox(width: 5),
+                _buildInput(context, 4),
+                _buildInput(context, 5),
+                _buildInput(context, 6),
+                _buildInput(context, 7),
+              ],
+            ),
+            FlatButton(
+                onPressed: () => print(myBirthdate),
+                child: Text(
+                  "Hesapla",
+                  style: myStyle15,
+                ))
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+Widget _buildTitle(title) {
+  return Container(
+    width: double.infinity,
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(
+        title,
+        style: myStyle25,
+        textAlign: TextAlign.center,
+      ),
+    ),
+  );
+}
+
+Widget _buildInput(context, index) {
+  return Container(
+    height: 30,
+    width: 30,
+    child: TextField(
+      cursorColor: Colors.red,
+      style: myStyle15,
+      keyboardType: TextInputType.number,
+      textInputAction: TextInputAction.next,
+      onSubmitted: (value) {
+        myBirthdate[index] = int.parse(value);
+        FocusScope.of(context).nextFocus();
+      },
+      inputFormatters: <TextInputFormatter>[
+        LengthLimitingTextInputFormatter(1),
+      ],
+      decoration: InputDecoration(
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.red, width: 1.0),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.black12, width: 1.0),
+        ),
+        contentPadding: EdgeInsets.only(left: 10),
+      ),
+    ),
+  );
+}
