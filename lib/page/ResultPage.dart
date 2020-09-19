@@ -85,6 +85,14 @@ class _ResultPageState extends State<ResultPage> {
                     _buildMeaning('İçsel Benlik', 5),
                     _buildMeaning('İçsel Çocuk, Hayattaki Görevin', 6),
                     _buildMeaning('Ruh Duygusu', 7),
+                    _buildOtherMeaning(0),
+                    _buildOtherMeaning(1),
+                    _buildOtherMeaning(2),
+                    _buildOtherMeaning(3),
+                    _buildOtherMeaning(4),
+                    _buildOtherMeaning(5),
+                    _buildOtherMeaning(6),
+                    _buildOtherMeaning(7),
                   ],
                 ),
               )
@@ -112,4 +120,43 @@ Widget _buildMeaning(String title, int index) {
       ],
     ),
   );
+}
+
+Widget _buildOtherMeaning(index) {
+  if (howMany(myBlackList, myPinCode[index]) > 0) {
+    return Container();
+  } else {
+    myBlackList.add(myPinCode[index]);
+    int temp = howMany(myPinCode, myPinCode[index]);
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+      child: Column(
+        children: [
+          Text(
+            temp == 1
+                ? myPinCode[index].toString() + ' rakamı'
+                : temp.toString() +
+                    ' tane ' +
+                    myPinCode[index].toString() +
+                    ' rakamı',
+            style: myStyle15,
+          ),
+          Text(
+            myBullShits[myPinCode[index]],
+            style: myStyle12,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+int howMany(List<int> arr, int numb) {
+  int count = 0;
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] == numb) {
+      count++;
+    }
+  }
+  return count;
 }
