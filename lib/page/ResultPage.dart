@@ -80,11 +80,11 @@ class _ResultPageState extends State<ResultPage> {
               Expanded(
                 child: ListView(
                   children: <Widget>[
+                    _buildMeaning('Kişilik', 0),
                     _buildMeaning('Hayat Dersanesi', 4),
-                    _buildMeaning('Hayat Dersanesi', 4),
-                    _buildMeaning('Hayat Dersanesi', 4),
-                    _buildMeaning('Hayat Dersanesi', 4),
-                    _buildMeaning('Hayat Dersanesi', 4),
+                    _buildMeaning('İçsel Benlik', 5),
+                    _buildMeaning('İçsel Çocuk, Hayattaki Görevin', 6),
+                    _buildMeaning('Ruh Duygusu', 7),
                   ],
                 ),
               )
@@ -103,11 +103,11 @@ Widget _buildMeaning(String title, int index) {
       children: [
         Text(
           title,
-          style: myStyle20,
+          style: myStyle15,
         ),
         Text(
-          meanings[myPinCode[index]],
-          style: myStyle15,
+          myBullShits[myPinCode[index]],
+          style: myStyle12,
         ),
       ],
     ),
