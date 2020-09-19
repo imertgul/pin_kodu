@@ -52,6 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: [
                 FlatButton(
                   onPressed: () {
+                    FocusScope.of(context).unfocus();
                     for (var i = 0; i < myController.length; i++) {
                       myController[i].clear();
                     }
@@ -115,7 +116,10 @@ Widget _buildInput(context, index) {
       controller: myController[index],
       keyboardType: TextInputType.number,
       textInputAction: TextInputAction.next,
-      onChanged: (value) => myBirthdate[index] = int.parse(value),
+      onChanged: (value) {
+        myBirthdate[index] = int.parse(value);
+        FocusScope.of(context).nextFocus();
+      },
       onSubmitted: (value) => FocusScope.of(context).nextFocus(),
       inputFormatters: <TextInputFormatter>[
         FilteringTextInputFormatter.digitsOnly,
