@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../utilities/constant.dart';
+import '../utilities/constant.dart';
 import 'ResultPage.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -59,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 FlatButton(
                     onPressed: () {
-                      myBlackList.removeRange(0, myBlackList.length);
+                      // myBlackList.removeRange(0, myBlackList.length);
                       myPinCode[0] = (myBirthdate[0] + myBirthdate[1]) % 9;
                       myPinCode[1] = (myBirthdate[2] + myBirthdate[3]) % 9;
                       myPinCode[2] = (myBirthdate[4] + myBirthdate[7]) % 9;
@@ -69,6 +70,7 @@ class _MyHomePageState extends State<MyHomePage> {
                       myPinCode[5] = (myPinCode[0] + myPinCode[1]) % 9;
                       myPinCode[6] = (myPinCode[1] + myPinCode[2]) % 9;
                       myPinCode[7] = (myPinCode[5] + myPinCode[6]) % 9;
+                      myPinCode[8] = sum(myPinCode) % 9;
                       print('My Birthdate: $myBirthdate');
                       print('My Pincode: $myPinCode');
                       Navigator.push(
@@ -130,4 +132,12 @@ Widget _buildInput(context, index) {
       ),
     ),
   );
+}
+
+int sum(List<int> arr) {
+  int sum = 0;
+  for (var i = 0; i < arr.length - 1; i++) {
+    sum += arr[i];
+  }
+  return sum;
 }
