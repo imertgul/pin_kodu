@@ -55,7 +55,7 @@ class _ResultPageState extends State<ResultPage> {
                   style: myStyle20,
                 ),
               ),
-              SizedBox(height: 30),
+              SizedBox(height: 10),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,23 +85,24 @@ class _ResultPageState extends State<ResultPage> {
                   ),
                 ],
               ),
+              SizedBox(height: 10),
+              Text(
+                'Toplam: ' + myPinCode[8].toString(),
+                style: myStyle20,
+              ),
               SizedBox(height: 30),
               Expanded(
                 child: ListView(
                   children: <Widget>[
-                    _buildMeaning('Kişilik', 0),
-                    _buildMeaning('Hayat Dersanesi', 4),
-                    _buildMeaning('İçsel Benlik', 5),
-                    _buildMeaning('İçsel Çocuk, Hayattaki Görevin', 6),
-                    _buildMeaning('Ruh Duygusu', 7),
-                    _buildOtherMeaning(0),
-                    _buildOtherMeaning(1),
-                    _buildOtherMeaning(2),
-                    _buildOtherMeaning(3),
-                    _buildOtherMeaning(4),
-                    _buildOtherMeaning(5),
-                    _buildOtherMeaning(6),
-                    _buildOtherMeaning(7),
+                    _buildOtherMeaning(0, 'Kişilik'),
+                    _buildOtherMeaning(1, 'Sosyal Bilinç'),
+                    _buildOtherMeaning(2, 'Küresel Bilinç'),
+                    _buildOtherMeaning(3, 'Yaşam Döngüsü'),
+                    _buildOtherMeaning(4, 'Hayat Dersanesi'),
+                    _buildOtherMeaning(5, 'İçsel Benlik'),
+                    _buildOtherMeaning(6, 'İçsel Çocuk'),
+                    _buildOtherMeaning(7, 'Ruh Duygusu'),
+                    _buildOtherMeaning(8, 'Yaşam'),
                   ],
                 ),
               )
@@ -113,13 +114,15 @@ class _ResultPageState extends State<ResultPage> {
   }
 }
 
-Widget _buildMeaning(String title, int index) {
+Widget _buildOtherMeaning(index, title) {
+  String myTitle = title + ': ' + myPinCode[index].toString() + ' rakamı';
+
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
     child: Column(
       children: [
         Text(
-          title,
+          myTitle,
           style: myStyle15,
         ),
         Text(
