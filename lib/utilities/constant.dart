@@ -6,3 +6,4 @@ TextStyle myStyle15 = new TextStyle(fontSize: 15);
 TextStyle myStyle10 = new TextStyle(fontSize: 10);
 
 List<int> myBirthdate = List<int>.generate(8, (index) => 0);
+List<int> myPinCode = List<int>.generate(8, (index) => 0);
