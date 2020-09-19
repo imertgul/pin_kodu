@@ -13,15 +13,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final myController = TextEditingController();
-
-  @override
-  void dispose() {
-    // Clean up the controller when the widget is disposed.
-    myController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,28 +44,43 @@ class _MyHomePageState extends State<MyHomePage> {
                 _buildInput(context, 7),
               ],
             ),
-            FlatButton(
-                onPressed: () {
-                  myPinCode[0] = (myBirthdate[0] + myBirthdate[1]) % 9;
-                  myPinCode[1] = (myBirthdate[2] + myBirthdate[3]) % 9;
-                  myPinCode[2] = (myBirthdate[4] + myBirthdate[7]) % 9;
-                  myPinCode[3] =
-                      (myPinCode[0] + myPinCode[1] + myPinCode[2]) % 9;
-                  myPinCode[4] = (myPinCode[0] + myPinCode[3]) % 9;
-                  myPinCode[5] = (myPinCode[0] + myPinCode[1]) % 9;
-                  myPinCode[6] = (myPinCode[1] + myPinCode[2]) % 9;
-                  myPinCode[7] = (myPinCode[5] + myPinCode[6]) % 9;
-                  print(myBirthdate);
-                  print(myPinCode);
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => ResultPage()),
-                  );
-                },
-                child: Text(
-                  "Hesapla",
-                  style: myStyle15,
-                ))
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                FlatButton(
+                  onPressed: () {
+                    for (var i = 0; i < myController.length; i++) {
+                      myController[i].clear();
+                    }
+                  },
+                  child: Text("Sıfırla", style: myStyle15),
+                ),
+                FlatButton(
+                    onPressed: () {
+                      myPinCode[0] = (myBirthdate[0] + myBirthdate[1]) % 9;
+                      myPinCode[1] = (myBirthdate[2] + myBirthdate[3]) % 9;
+                      myPinCode[2] = (myBirthdate[4] + myBirthdate[7]) % 9;
+                      myPinCode[3] =
+                          (myPinCode[0] + myPinCode[1] + myPinCode[2]) % 9;
+                      myPinCode[4] = (myPinCode[0] + myPinCode[3]) % 9;
+                      myPinCode[5] = (myPinCode[0] + myPinCode[1]) % 9;
+                      myPinCode[6] = (myPinCode[1] + myPinCode[2]) % 9;
+                      myPinCode[7] = (myPinCode[5] + myPinCode[6]) % 9;
+                      print('My Birthdate: $myBirthdate');
+                      print('My Pincode: $myPinCode');
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => ResultPage()),
+                      );
+                    },
+                    child: Text(
+                      "Hesapla",
+                      style: myStyle15,
+                    )),
+              ],
+            )
           ],
         ),
       ),
@@ -103,12 +109,11 @@ Widget _buildInput(context, index) {
     child: TextField(
       cursorColor: Colors.red,
       style: myStyle15,
+      controller: myController[index],
       keyboardType: TextInputType.number,
       textInputAction: TextInputAction.next,
-      onSubmitted: (value) {
-        myBirthdate[index] = int.parse(value);
-        FocusScope.of(context).nextFocus();
-      },
+      onChanged: (value) => myBirthdate[index] = int.parse(value),
+      onSubmitted: (value) => FocusScope.of(context).nextFocus(),
       inputFormatters: <TextInputFormatter>[
         LengthLimitingTextInputFormatter(1),
       ],
