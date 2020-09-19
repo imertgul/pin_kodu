@@ -25,6 +25,7 @@ class _ResultPageState extends State<ResultPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
+              SizedBox(height: 30),
               Text(
                 myBirthdate[0].toString() +
                     myBirthdate[1].toString() +
@@ -46,30 +47,69 @@ class _ResultPageState extends State<ResultPage> {
                 ),
               ),
               SizedBox(height: 30),
-              Text(
-                myPinCode[0].toString() +
-                    '    ' +
-                    myPinCode[1].toString() +
-                    '    ' +
-                    myPinCode[2].toString() +
-                    '    ' +
-                    myPinCode[3].toString() +
-                    '    ' +
-                    myPinCode[4].toString(),
-                style: myStyle25,
+              Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Text(
+                    myPinCode[0].toString() +
+                        '    ' +
+                        myPinCode[1].toString() +
+                        '    ' +
+                        myPinCode[2].toString() +
+                        '    ' +
+                        myPinCode[3].toString() +
+                        '    ' +
+                        myPinCode[4].toString(),
+                    style: myStyle25,
+                  ),
+                  Text(
+                    '   ' +
+                        myPinCode[5].toString() +
+                        '    ' +
+                        myPinCode[6].toString(),
+                    style: myStyle25,
+                  ),
+                  Text(
+                    '      ' + myPinCode[7].toString(),
+                    style: myStyle25,
+                  ),
+                ],
               ),
-              Text(
-                myPinCode[5].toString() + '    ' + myPinCode[6].toString(),
-                style: myStyle25,
-              ),
-              Text(
-                myPinCode[7].toString(),
-                style: myStyle25,
-              ),
+              SizedBox(height: 30),
+              Expanded(
+                child: ListView(
+                  children: <Widget>[
+                    _buildMeaning('Hayat Dersanesi', 4),
+                    _buildMeaning('Hayat Dersanesi', 4),
+                    _buildMeaning('Hayat Dersanesi', 4),
+                    _buildMeaning('Hayat Dersanesi', 4),
+                    _buildMeaning('Hayat Dersanesi', 4),
+                  ],
+                ),
+              )
             ],
           ),
         ),
       ),
     );
   }
+}
+
+Widget _buildMeaning(String title, int index) {
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+    child: Column(
+      children: [
+        Text(
+          title,
+          style: myStyle20,
+        ),
+        Text(
+          meanings[myPinCode[index]],
+          style: myStyle15,
+        ),
+      ],
+    ),
+  );
 }
