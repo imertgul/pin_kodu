@@ -116,6 +116,7 @@ Widget _buildInput(context, index) {
       onChanged: (value) => myBirthdate[index] = int.parse(value),
       onSubmitted: (value) => FocusScope.of(context).nextFocus(),
       inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly,
         LengthLimitingTextInputFormatter(1),
       ],
       decoration: InputDecoration(
