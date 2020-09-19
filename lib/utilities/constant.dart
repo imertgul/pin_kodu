@@ -7,8 +7,8 @@ TextStyle myStyle12 = new TextStyle(fontSize: 12);
 TextStyle myStyle10 = new TextStyle(fontSize: 10);
 
 List<int> myBirthdate = List<int>.generate(8, (index) => 0);
-List<int> myPinCode = List<int>.generate(8, (index) => 0);
-List<int> myBlackList = List<int>();
+List<int> myPinCode = List<int>.generate(9, (index) => 0);
+
 List<TextEditingController> myController = List<TextEditingController>.generate(
     8, (index) => new TextEditingController());
 

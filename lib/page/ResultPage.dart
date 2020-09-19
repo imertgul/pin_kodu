@@ -30,13 +30,7 @@ class _ResultPageState extends State<ResultPage> {
                 child: Align(
                   alignment: Alignment.centerLeft,
                   child: FlatButton(
-                      onPressed: () {
-                        for (var i = 0; i < myController.length; i++) {
-                          myController[i].clear();
-                        }
-                        myBlackList.removeRange(0, myBlackList.length);
-                        Navigator.pop(context);
-                      },
+                      onPressed: () => Navigator.pop(context),
                       child: Text("Birdaha hesapla")),
                 ),
               ),
@@ -135,35 +129,6 @@ Widget _buildMeaning(String title, int index) {
       ],
     ),
   );
-}
-
-Widget _buildOtherMeaning(index) {
-  if (howMany(myBlackList, myPinCode[index]) > 0) {
-    return Container();
-  } else {
-    myBlackList.add(myPinCode[index]);
-    int temp = howMany(myPinCode, myPinCode[index]);
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
-      child: Column(
-        children: [
-          Text(
-            temp == 1
-                ? myPinCode[index].toString() + ' rakamı'
-                : temp.toString() +
-                    ' tane ' +
-                    myPinCode[index].toString() +
-                    ' rakamı',
-            style: myStyle15,
-          ),
-          Text(
-            myBullShits[myPinCode[index]],
-            style: myStyle12,
-          ),
-        ],
-      ),
-    );
-  }
 }
 
 int howMany(List<int> arr, int numb) {
