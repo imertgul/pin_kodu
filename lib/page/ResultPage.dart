@@ -25,7 +25,22 @@ class _ResultPageState extends State<ResultPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 30),
+              Container(
+                width: double.infinity,
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: FlatButton(
+                      onPressed: () {
+                        for (var i = 0; i < myController.length; i++) {
+                          myController[i].clear();
+                        }
+                        myBlackList.removeRange(0, myBlackList.length);
+                        Navigator.pop(context);
+                      },
+                      child: Text("Birdaha hesapla")),
+                ),
+              ),
+              SizedBox(height: 20),
               Text(
                 myBirthdate[0].toString() +
                     myBirthdate[1].toString() +

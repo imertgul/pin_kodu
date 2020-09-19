@@ -59,6 +59,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 FlatButton(
                     onPressed: () {
+                      myBlackList.removeRange(0, myBlackList.length);
                       myPinCode[0] = (myBirthdate[0] + myBirthdate[1]) % 9;
                       myPinCode[1] = (myBirthdate[2] + myBirthdate[3]) % 9;
                       myPinCode[2] = (myBirthdate[4] + myBirthdate[7]) % 9;
