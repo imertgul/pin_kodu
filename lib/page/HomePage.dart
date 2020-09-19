@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../utilities/constant.dart';
+import 'ResultPage.dart';
 
 class MyHomePage extends StatefulWidget {
   MyHomePage({Key key, this.title}) : super(key: key);
@@ -53,7 +54,23 @@ class _MyHomePageState extends State<MyHomePage> {
               ],
             ),
             FlatButton(
-                onPressed: () => print(myBirthdate),
+                onPressed: () {
+                  myPinCode[0] = (myBirthdate[0] + myBirthdate[1]) % 9;
+                  myPinCode[1] = (myBirthdate[2] + myBirthdate[3]) % 9;
+                  myPinCode[2] = (myBirthdate[4] + myBirthdate[7]) % 9;
+                  myPinCode[3] =
+                      (myPinCode[0] + myPinCode[1] + myPinCode[2]) % 9;
+                  myPinCode[4] = (myPinCode[0] + myPinCode[3]) % 9;
+                  myPinCode[5] = (myPinCode[0] + myPinCode[1]) % 9;
+                  myPinCode[6] = (myPinCode[1] + myPinCode[2]) % 9;
+                  myPinCode[7] = (myPinCode[5] + myPinCode[6]) % 9;
+                  print(myBirthdate);
+                  print(myPinCode);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ResultPage()),
+                  );
+                },
                 child: Text(
                   "Hesapla",
                   style: myStyle15,
