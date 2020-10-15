@@ -35,19 +35,7 @@ class _ResultPageState extends State<ResultPage> {
                 ),
               ),
               SizedBox(height: 20),
-              Text(
-                myBirthdate[0].toString() +
-                    myBirthdate[1].toString() +
-                    '.' +
-                    myBirthdate[2].toString() +
-                    myBirthdate[3].toString() +
-                    '.' +
-                    myBirthdate[4].toString() +
-                    myBirthdate[5].toString() +
-                    myBirthdate[6].toString() +
-                    myBirthdate[7].toString(),
-                style: myStyle20,
-              ),
+              buildBirthdayLabel(myBirthdate),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
@@ -56,53 +44,20 @@ class _ResultPageState extends State<ResultPage> {
                 ),
               ),
               SizedBox(height: 10),
-              Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    myPinCode[0].toString() +
-                        '    ' +
-                        myPinCode[1].toString() +
-                        '    ' +
-                        myPinCode[2].toString() +
-                        '    ' +
-                        myPinCode[3].toString() +
-                        '    ' +
-                        myPinCode[4].toString(),
-                    style: myStyle25,
-                  ),
-                  Text(
-                    '   ' +
-                        myPinCode[5].toString() +
-                        '    ' +
-                        myPinCode[6].toString(),
-                    style: myStyle25,
-                  ),
-                  Text(
-                    '      ' + myPinCode[7].toString(),
-                    style: myStyle25,
-                  ),
-                ],
-              ),
-              SizedBox(height: 10),
-              Text(
-                'Toplam: ' + myPinCode[8].toString(),
-                style: myStyle20,
-              ),
+              buildResultTriangle(myPinCode),
               SizedBox(height: 30),
               Expanded(
                 child: ListView(
                   children: <Widget>[
-                    _buildOtherMeaning(0, 'Kişilik'),
-                    _buildOtherMeaning(1, 'Sosyal Bilinç'),
-                    _buildOtherMeaning(2, 'Küresel Bilinç'),
-                    _buildOtherMeaning(3, 'Yaşam Döngüsü'),
-                    _buildOtherMeaning(4, 'Hayat Dersanesi'),
-                    _buildOtherMeaning(5, 'İçsel Benlik'),
-                    _buildOtherMeaning(6, 'İçsel Çocuk'),
-                    _buildOtherMeaning(7, 'Ruh Duygusu'),
-                    _buildOtherMeaning(8, 'Yaşam'),
+                    buildMeanings(myBullShits, myPinCode, 0, 'Kişilik'),
+                    buildMeanings(myBullShits, myPinCode, 1, 'Sosyal Bilinç'),
+                    buildMeanings(myBullShits, myPinCode, 2, 'Küresel Bilinç'),
+                    buildMeanings(myBullShits, myPinCode, 3, 'Yaşam Döngüsü'),
+                    buildMeanings(myBullShits, myPinCode, 4, 'Hayat Dersanesi'),
+                    buildMeanings(myBullShits, myPinCode, 5, 'İçsel Benlik'),
+                    buildMeanings(myBullShits, myPinCode, 6, 'İçsel Çocuk'),
+                    buildMeanings(myBullShits, myPinCode, 7, 'Ruh Duygusu'),
+                    buildMeanings(myBullShits, myPinCode, 8, 'Yaşam'),
                   ],
                 ),
               )
@@ -112,34 +67,4 @@ class _ResultPageState extends State<ResultPage> {
       ),
     );
   }
-}
-
-Widget _buildOtherMeaning(index, title) {
-  String myTitle = title + ': ' + myPinCode[index].toString() + ' rakamı';
-
-  return Padding(
-    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
-    child: Column(
-      children: [
-        Text(
-          myTitle,
-          style: myStyle15,
-        ),
-        Text(
-          myBullShits[myPinCode[index]],
-          style: myStyle12,
-        ),
-      ],
-    ),
-  );
-}
-
-int howMany(List<int> arr, int numb) {
-  int count = 0;
-  for (var i = 0; i < arr.length; i++) {
-    if (arr[i] == numb) {
-      count++;
-    }
-  }
-  return count;
 }
