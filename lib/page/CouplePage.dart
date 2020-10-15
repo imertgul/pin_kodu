@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pin_kodu/utilities/constant.dart';
+import 'ResultCouplePage.dart';
 
 class CouplePage extends StatefulWidget {
   final String title;
@@ -74,7 +75,6 @@ class _CouplePageState extends State<CouplePage> {
                     FlatButton(
                       onPressed: () {
                         FocusScope.of(context).unfocus();
-
                         for (var i = 0; i < myController.length; i++) {
                           myLadyController[i].clear();
                           myManController[i].clear();
@@ -84,13 +84,14 @@ class _CouplePageState extends State<CouplePage> {
                     ),
                     FlatButton(
                       onPressed: () {
-                        // myPinCode = calculatePin(myBirthdate);
-                        print('My Birthdate: $myBirthdate');
-                        print('My Pincode: $myPinCode');
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(builder: (context) => ResultPage()),
-                        // );
+                        myCouplePinCode =
+                            calculateCouple(myLadydate, myMandate);
+                        print('our pin: $myCouplePinCode');
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ResultCouplePage()),
+                        );
                       },
                       child: Text(
                         "Hesapla",
