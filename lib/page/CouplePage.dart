@@ -54,16 +54,16 @@ class _CouplePageState extends State<CouplePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    buildInput(context, myLadydate, 0, myManController),
-                    buildInput(context, myLadydate, 1, myManController),
+                    buildInput(context, myMandate, 0, myManController),
+                    buildInput(context, myMandate, 1, myManController),
                     SizedBox(width: 5),
-                    buildInput(context, myLadydate, 2, myManController),
-                    buildInput(context, myLadydate, 3, myManController),
+                    buildInput(context, myMandate, 2, myManController),
+                    buildInput(context, myMandate, 3, myManController),
                     SizedBox(width: 5),
-                    buildInput(context, myLadydate, 4, myManController),
-                    buildInput(context, myLadydate, 5, myManController),
-                    buildInput(context, myLadydate, 6, myManController),
-                    buildInput(context, myLadydate, 7, myManController),
+                    buildInput(context, myMandate, 4, myManController),
+                    buildInput(context, myMandate, 5, myManController),
+                    buildInput(context, myMandate, 6, myManController),
+                    buildInput(context, myMandate, 7, myManController),
                   ],
                 ),
                 SizedBox(height: 10),
@@ -84,7 +84,7 @@ class _CouplePageState extends State<CouplePage> {
                     ),
                     FlatButton(
                       onPressed: () {
-                        myPinCode = calculatePin(myBirthdate);
+                        // myPinCode = calculatePin(myBirthdate);
                         print('My Birthdate: $myBirthdate');
                         print('My Pincode: $myPinCode');
                         // Navigator.push(
