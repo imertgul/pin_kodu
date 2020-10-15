@@ -11,6 +11,7 @@ List<int> myBirthdate = List<int>.generate(8, (index) => 0);
 List<int> myLadydate = List<int>.generate(8, (index) => 0);
 List<int> myMandate = List<int>.generate(8, (index) => 0);
 List<int> myPinCode = List<int>.generate(9, (index) => 0);
+List<int> myCouplePinCode = List<int>.generate(9, (index) => 0);
 
 List<TextEditingController> myController = List<TextEditingController>.generate(
     8, (index) => new TextEditingController());
@@ -36,17 +37,9 @@ Map<int, String> myBullShits = {
 
 List<int> calculateCouple(List<int> manBirthday, List<int> ladyBirthday) {
   List<int> pin = List<int>.generate(9, (index) => 0);
-  pin[0] = (manBirthday[0] + ladyBirthday[0]) % 9;
-  pin[1] = (manBirthday[1] + ladyBirthday[1]) % 9;
-  pin[2] = (manBirthday[2] + ladyBirthday[2]) % 9;
-  pin[3] = (manBirthday[3] + ladyBirthday[3]) % 9;
-  pin[4] = (manBirthday[4] + ladyBirthday[4]) % 9;
-  pin[5] =
-      ((pin[0] + pin[1]) % 9) + ((manBirthday[6] + ladyBirthday[6]) % 9) % 9;
-  pin[6] =
-      ((pin[3] + pin[4]) % 9) + ((manBirthday[7] + ladyBirthday[7]) % 9) % 9;
-  pin[7] = (pin[5] + pin[6]) % 9;
-  pin[8] = sum(pin) % 9;
+  List<int> pinMan = calculatePin(manBirthday);
+  List<int> pinlady = calculatePin(ladyBirthday);
+  for (var i = 0; i < 9; i++) pin[i] = (pinlady[i] + pinMan[i]) & 9;
   return pin;
 }
 
