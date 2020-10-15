@@ -31,7 +31,7 @@ class _ResultPageState extends State<ResultPage> {
                   alignment: Alignment.centerLeft,
                   child: FlatButton(
                       onPressed: () => Navigator.pop(context),
-                      child: Text("Birdaha hesapla")),
+                      child: Text("Bir daha hesapla")),
                 ),
               ),
               SizedBox(height: 20),
