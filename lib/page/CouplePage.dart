@@ -76,7 +76,8 @@ class _CouplePageState extends State<CouplePage> {
                         FocusScope.of(context).unfocus();
 
                         for (var i = 0; i < myController.length; i++) {
-                          myController[i].clear();
+                          myLadyController[i].clear();
+                          myManController[i].clear();
                         }
                       },
                       child: Text("Sıfırla", style: myStyle15),
