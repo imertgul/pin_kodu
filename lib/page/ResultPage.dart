@@ -31,11 +31,11 @@ class _ResultPageState extends State<ResultPage> {
                   alignment: Alignment.centerLeft,
                   child: FlatButton(
                       onPressed: () => Navigator.pop(context),
-                      child: Text("Birdaha hesapla")),
+                      child: Text("Bir daha hesapla")),
                 ),
               ),
               SizedBox(height: 20),
-              buildBirthdayLabel(),
+              buildBirthdayLabel(myBirthdate),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
@@ -49,20 +49,15 @@ class _ResultPageState extends State<ResultPage> {
               Expanded(
                 child: ListView(
                   children: <Widget>[
-                    buildOtherMeaning(myBullShits, myPinCode, 0, 'Kişilik'),
-                    buildOtherMeaning(
-                        myBullShits, myPinCode, 1, 'Sosyal Bilinç'),
-                    buildOtherMeaning(
-                        myBullShits, myPinCode, 2, 'Küresel Bilinç'),
-                    buildOtherMeaning(
-                        myBullShits, myPinCode, 3, 'Yaşam Döngüsü'),
-                    buildOtherMeaning(
-                        myBullShits, myPinCode, 4, 'Hayat Dersanesi'),
-                    buildOtherMeaning(
-                        myBullShits, myPinCode, 5, 'İçsel Benlik'),
-                    buildOtherMeaning(myBullShits, myPinCode, 6, 'İçsel Çocuk'),
-                    buildOtherMeaning(myBullShits, myPinCode, 7, 'Ruh Duygusu'),
-                    buildOtherMeaning(myBullShits, myPinCode, 8, 'Yaşam'),
+                    buildMeanings(myBullShits, myPinCode, 0, 'Kişilik'),
+                    buildMeanings(myBullShits, myPinCode, 1, 'Sosyal Bilinç'),
+                    buildMeanings(myBullShits, myPinCode, 2, 'Küresel Bilinç'),
+                    buildMeanings(myBullShits, myPinCode, 3, 'Yaşam Döngüsü'),
+                    buildMeanings(myBullShits, myPinCode, 4, 'Hayat Dersanesi'),
+                    buildMeanings(myBullShits, myPinCode, 5, 'İçsel Benlik'),
+                    buildMeanings(myBullShits, myPinCode, 6, 'İçsel Çocuk'),
+                    buildMeanings(myBullShits, myPinCode, 7, 'Ruh Duygusu'),
+                    buildMeanings(myBullShits, myPinCode, 8, 'Yaşam'),
                   ],
                 ),
               )
