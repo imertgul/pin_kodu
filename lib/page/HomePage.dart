@@ -63,11 +63,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     FlatButton(
                       onPressed: () {
                         myPinCode = calculatePin(myBirthdate);
-
                         print('My Birthdate: $myBirthdate');
-
                         print('My Pincode: $myPinCode');
-
                         Navigator.push(
                           context,
                           MaterialPageRoute(builder: (context) => ResultPage()),
