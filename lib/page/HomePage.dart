@@ -60,17 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
                 FlatButton(
                     onPressed: () {
-                      // myBlackList.removeRange(0, myBlackList.length);
-                      myPinCode[0] = (myBirthdate[0] + myBirthdate[1]) % 9;
-                      myPinCode[1] = (myBirthdate[2] + myBirthdate[3]) % 9;
-                      myPinCode[2] = (myBirthdate[4] + myBirthdate[7]) % 9;
-                      myPinCode[3] =
-                          (myPinCode[0] + myPinCode[1] + myPinCode[2]) % 9;
-                      myPinCode[4] = (myPinCode[0] + myPinCode[3]) % 9;
-                      myPinCode[5] = (myPinCode[0] + myPinCode[1]) % 9;
-                      myPinCode[6] = (myPinCode[1] + myPinCode[2]) % 9;
-                      myPinCode[7] = (myPinCode[5] + myPinCode[6]) % 9;
-                      myPinCode[8] = sum(myPinCode) % 9;
+                      myPinCode = calculatePin(myBirthdate);
                       print('My Birthdate: $myBirthdate');
                       print('My Pincode: $myPinCode');
                       Navigator.push(
@@ -135,12 +125,4 @@ Widget _buildInput(context, index) {
       ),
     ),
   );
-}
-
-int sum(List<int> arr) {
-  int sum = 0;
-  for (var i = 0; i < arr.length - 1; i++) {
-    sum += arr[i];
-  }
-  return sum;
 }

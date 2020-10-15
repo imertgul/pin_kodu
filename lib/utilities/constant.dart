@@ -24,3 +24,26 @@ Map<int, String> myBullShits = {
   8: "Güçlü yanları: Dengeli, sabırlı, destekleyici, sorumluluk sahibi, ciddi, deneyimli, soğukkanlı, çalışkan, güvenlik duygusundan hoşlanan, akıllı, dünyevi.\nZayıf Yanları: Güvensiz, telaşlı, gergin, takıntılı, duygularını gizleyen, hesapçı, buyurgan, dalavereci, sabit, kendini kurban hisseden ya da kurban rolü oynamayı seven",
   9: "Güçlü yanları: Çocuksu, sanatkar, zeki, masum, hassas, kararlı, bağışlayıcı, dürüst, saf, benzersiz.\nZayıf Yanları: Tutarsız, aklı karışık, budala, düşünmeden hareket eden, unutkan, kibirli, güvensiz, inatçı, sabırsız",
 };
+
+List<int> calculatePin(List<int> birthday) {
+  List<int> pin = List<int>.generate(9, (index) => 0);
+  pin[0] = (birthday[0] + birthday[1]) % 9;
+  pin[1] = (birthday[2] + birthday[3]) % 9;
+  pin[2] = (birthday[4] + birthday[7]) % 9;
+  pin[3] = (pin[0] + pin[1] + pin[2]) % 9;
+  pin[4] = (pin[0] + pin[3]) % 9;
+  pin[5] = (pin[0] + pin[1]) % 9;
+  pin[6] = (pin[1] + pin[2]) % 9;
+  pin[7] = (pin[5] + pin[6]) % 9;
+  pin[8] = sum(pin) % 9;
+
+  return pin;
+}
+
+int sum(List<int> arr) {
+  int sum = 0;
+  for (var i = 0; i < arr.length - 1; i++) {
+    sum += arr[i];
+  }
+  return sum;
+}

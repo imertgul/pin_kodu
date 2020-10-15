@@ -46,7 +46,7 @@ class _ResultPageState extends State<ResultPage> {
                     myBirthdate[5].toString() +
                     myBirthdate[6].toString() +
                     myBirthdate[7].toString(),
-                style: myStyle20,
+                style: myStyle15,
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -87,22 +87,29 @@ class _ResultPageState extends State<ResultPage> {
               ),
               SizedBox(height: 10),
               Text(
-                'Toplam: ' + myPinCode[8].toString(),
-                style: myStyle20,
+                'Toplam Sayınız: ' + myPinCode[8].toString(),
+                style: myStyle15,
               ),
               SizedBox(height: 30),
               Expanded(
                 child: ListView(
                   children: <Widget>[
-                    _buildOtherMeaning(0, 'Kişilik'),
-                    _buildOtherMeaning(1, 'Sosyal Bilinç'),
-                    _buildOtherMeaning(2, 'Küresel Bilinç'),
-                    _buildOtherMeaning(3, 'Yaşam Döngüsü'),
-                    _buildOtherMeaning(4, 'Hayat Dersanesi'),
-                    _buildOtherMeaning(5, 'İçsel Benlik'),
-                    _buildOtherMeaning(6, 'İçsel Çocuk'),
-                    _buildOtherMeaning(7, 'Ruh Duygusu'),
-                    _buildOtherMeaning(8, 'Yaşam'),
+                    _buildOtherMeaning(myBullShits, myPinCode, 0, 'Kişilik'),
+                    _buildOtherMeaning(
+                        myBullShits, myPinCode, 1, 'Sosyal Bilinç'),
+                    _buildOtherMeaning(
+                        myBullShits, myPinCode, 2, 'Küresel Bilinç'),
+                    _buildOtherMeaning(
+                        myBullShits, myPinCode, 3, 'Yaşam Döngüsü'),
+                    _buildOtherMeaning(
+                        myBullShits, myPinCode, 4, 'Hayat Dersanesi'),
+                    _buildOtherMeaning(
+                        myBullShits, myPinCode, 5, 'İçsel Benlik'),
+                    _buildOtherMeaning(
+                        myBullShits, myPinCode, 6, 'İçsel Çocuk'),
+                    _buildOtherMeaning(
+                        myBullShits, myPinCode, 7, 'Ruh Duygusu'),
+                    _buildOtherMeaning(myBullShits, myPinCode, 8, 'Yaşam'),
                   ],
                 ),
               )
@@ -114,8 +121,8 @@ class _ResultPageState extends State<ResultPage> {
   }
 }
 
-Widget _buildOtherMeaning(index, title) {
-  String myTitle = title + ': ' + myPinCode[index].toString() + ' rakamı';
+Widget _buildOtherMeaning(bullshit, pin, index, title) {
+  String myTitle = title + ': ' + pin[index].toString() + ' rakamı';
 
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
@@ -126,7 +133,7 @@ Widget _buildOtherMeaning(index, title) {
           style: myStyle15,
         ),
         Text(
-          myBullShits[myPinCode[index]],
+          bullshit[pin[index]],
           style: myStyle12,
         ),
       ],
