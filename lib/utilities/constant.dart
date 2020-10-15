@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 TextStyle myStyle25 = new TextStyle(fontSize: 25);
 TextStyle myStyle20 = new TextStyle(fontSize: 20);
@@ -7,10 +8,18 @@ TextStyle myStyle12 = new TextStyle(fontSize: 12);
 TextStyle myStyle10 = new TextStyle(fontSize: 10);
 
 List<int> myBirthdate = List<int>.generate(8, (index) => 0);
+List<int> myLadydate = List<int>.generate(8, (index) => 0);
+List<int> myMandate = List<int>.generate(8, (index) => 0);
 List<int> myPinCode = List<int>.generate(9, (index) => 0);
 
 List<TextEditingController> myController = List<TextEditingController>.generate(
     8, (index) => new TextEditingController());
+List<TextEditingController> myManController =
+    List<TextEditingController>.generate(
+        8, (index) => new TextEditingController());
+List<TextEditingController> myLadyController =
+    List<TextEditingController>.generate(
+        8, (index) => new TextEditingController());
 
 Map<int, String> myBullShits = {
   // 0: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pharetra, est sit amet rutrum cursus, lectus quam lacinia urna, non malesuada leo mi et turpis. Nam vel varius mi. Curabitur dui elit, consequat et ipsum quis, mollis ultrices sem.",
@@ -46,4 +55,133 @@ int sum(List<int> arr) {
     sum += arr[i];
   }
   return sum;
+}
+
+Widget buildResultTriangle(pin) {
+  return Column(
+    children: [
+      Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            pin[0].toString() +
+                '    ' +
+                pin[1].toString() +
+                '    ' +
+                pin[2].toString() +
+                '    ' +
+                pin[3].toString() +
+                '    ' +
+                pin[4].toString(),
+            style: myStyle25,
+          ),
+          Text(
+            '   ' + pin[5].toString() + '    ' + pin[6].toString(),
+            style: myStyle25,
+          ),
+          Text(
+            '      ' + pin[7].toString(),
+            style: myStyle25,
+          ),
+        ],
+      ),
+      SizedBox(height: 10),
+      Text(
+        'Toplam Sayınız: ' + pin[8].toString(),
+        style: myStyle15,
+      ),
+    ],
+  );
+}
+
+Widget buildOtherMeaning(bullshit, pin, index, title) {
+  String myTitle = title + ': ' + pin[index].toString() + ' rakamı';
+  return Padding(
+    padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+    child: Column(
+      children: [
+        Text(
+          myTitle,
+          style: myStyle15,
+        ),
+        Text(
+          bullshit[pin[index]],
+          style: myStyle12,
+        ),
+      ],
+    ),
+  );
+}
+
+int howMany(List<int> arr, int numb) {
+  int count = 0;
+  for (var i = 0; i < arr.length; i++) {
+    if (arr[i] == numb) {
+      count++;
+    }
+  }
+  return count;
+}
+
+Widget buildBirthdayLabel() {
+  return Text(
+    myBirthdate[0].toString() +
+        myBirthdate[1].toString() +
+        '.' +
+        myBirthdate[2].toString() +
+        myBirthdate[3].toString() +
+        '.' +
+        myBirthdate[4].toString() +
+        myBirthdate[5].toString() +
+        myBirthdate[6].toString() +
+        myBirthdate[7].toString(),
+    style: myStyle15,
+  );
+}
+
+Widget buildTitle(title) {
+  return Container(
+    width: double.infinity,
+    child: Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text(
+        title,
+        style: myStyle25,
+        textAlign: TextAlign.center,
+      ),
+    ),
+  );
+}
+
+Widget buildInput(context, birthday, index, controllerArr) {
+  return Container(
+    height: 30,
+    width: 30,
+    child: TextField(
+      cursorColor: Colors.red,
+      style: myStyle15,
+      controller: controllerArr[index],
+      keyboardType: TextInputType.number,
+      textInputAction: TextInputAction.next,
+      onChanged: (value) {
+        birthday[index] = int.parse(value);
+        FocusScope.of(context).nextFocus();
+      },
+      onSubmitted: (value) => FocusScope.of(context).nextFocus(),
+      inputFormatters: <TextInputFormatter>[
+        FilteringTextInputFormatter.digitsOnly,
+        LengthLimitingTextInputFormatter(1),
+      ],
+      decoration: InputDecoration(
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.red, width: 1.0),
+        ),
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.black12, width: 1.0),
+        ),
+        contentPadding: EdgeInsets.only(left: 10),
+      ),
+    ),
+  );
 }
