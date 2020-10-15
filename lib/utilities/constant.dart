@@ -34,6 +34,22 @@ Map<int, String> myBullShits = {
   9: "Güçlü yanları: Çocuksu, sanatkar, zeki, masum, hassas, kararlı, bağışlayıcı, dürüst, saf, benzersiz.\nZayıf Yanları: Tutarsız, aklı karışık, budala, düşünmeden hareket eden, unutkan, kibirli, güvensiz, inatçı, sabırsız",
 };
 
+List<int> calculateCouple(List<int> manBirthday, List<int> ladyBirthday) {
+  List<int> pin = List<int>.generate(9, (index) => 0);
+  pin[0] = (manBirthday[0] + ladyBirthday[0]) % 9;
+  pin[1] = (manBirthday[1] + ladyBirthday[1]) % 9;
+  pin[2] = (manBirthday[2] + ladyBirthday[2]) % 9;
+  pin[3] = (manBirthday[3] + ladyBirthday[3]) % 9;
+  pin[4] = (manBirthday[4] + ladyBirthday[4]) % 9;
+  pin[5] =
+      ((pin[0] + pin[1]) % 9) + ((manBirthday[6] + ladyBirthday[6]) % 9) % 9;
+  pin[6] =
+      ((pin[3] + pin[4]) % 9) + ((manBirthday[7] + ladyBirthday[7]) % 9) % 9;
+  pin[7] = (pin[5] + pin[6]) % 9;
+  pin[8] = sum(pin) % 9;
+  return pin;
+}
+
 List<int> calculatePin(List<int> birthday) {
   List<int> pin = List<int>.generate(9, (index) => 0);
   pin[0] = (birthday[0] + birthday[1]) % 9;
