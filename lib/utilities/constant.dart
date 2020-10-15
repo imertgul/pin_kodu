@@ -34,12 +34,24 @@ Map<int, String> myBullShits = {
   8: "Güçlü yanları: Dengeli, sabırlı, destekleyici, sorumluluk sahibi, ciddi, deneyimli, soğukkanlı, çalışkan, güvenlik duygusundan hoşlanan, akıllı, dünyevi.\nZayıf Yanları: Güvensiz, telaşlı, gergin, takıntılı, duygularını gizleyen, hesapçı, buyurgan, dalavereci, sabit, kendini kurban hisseden ya da kurban rolü oynamayı seven",
   9: "Güçlü yanları: Çocuksu, sanatkar, zeki, masum, hassas, kararlı, bağışlayıcı, dürüst, saf, benzersiz.\nZayıf Yanları: Tutarsız, aklı karışık, budala, düşünmeden hareket eden, unutkan, kibirli, güvensiz, inatçı, sabırsız",
 };
+Map<int, String> myCoupleBullShits = {
+  // 0: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi pharetra, est sit amet rutrum cursus, lectus quam lacinia urna, non malesuada leo mi et turpis. Nam vel varius mi. Curabitur dui elit, consequat et ipsum quis, mollis ultrices sem.",
+  1: "Bu bir güç oyunudur. Eşlerden her biri lider olmayı isteyeceği için , bir tanesi boyun eymeyi kabul etmediği takdirde çatışmalar çıkacaktır.",
+  2: "2 yapıştırıcıdır. Bir aşk ilişkisi için en kolay rakam budur. Bu rakama sahip olan ilişki ilgili ve besleyici olacaktır.",
+  3: "3 düzenleme ile ilişkilidir. Bu ilişkide bir çok şey başarılacaktır. Ancak bir şeyler oluşmadığı zaman eşler arasında derin bir ilişki de kurulamaz.",
+  4: "Bu konumdaki 4 oldukça hilekar bir rakamdır. İki insan arasında şüpheler olacağı için, eşlerin birbirlerine karşı mümkün olduğunca açık ve dürüst olmaları son derece önemlidir.",
+  5: "Bu hanedeki 5 ilişkide bol miktarda konuşma olmasını sağlar. Son derece esin verici bir ilişkidir ama bağımlılık yaratma eğilimi bulunmaktadır.",
+  6: "Tutkulu bir ilişkidir. Bu çift son derece sosyal olacak ve bir arada çok hoş görünecektir.",
+  7: "Bu konumda bulunan 7 rakamı ilişkiye mahrem bir yapı kazandırmakta ve eşlerin birbirlerine karşı sakin ve soğuk olmalarına neden olabilmektedir. Bunun sonucu olarak eşler arasında iletişim zor olabilir.",
+  8: "Sekiz bir toprak rakamıdır ve ilişkiye ağır bir duygu verir. Öyle ki adeta ilişki için yeterince alan yokmuş gibi hissetmenize neden olabilir. Dışarıda bolca yapılan aktivite ilişkinin hafiflemesine  yardımcı olabilir.",
+  9: "Bu, eğlenceli, oyuncu bir ilişkidir ve eşler arasında bolca affedicilik bulunur.",
+};
 
 List<int> calculateCouple(List<int> manBirthday, List<int> ladyBirthday) {
   List<int> pin = List<int>.generate(9, (index) => 0);
   List<int> pinMan = calculatePin(manBirthday);
   List<int> pinlady = calculatePin(ladyBirthday);
-  for (var i = 0; i < 9; i++) pin[i] = (pinlady[i] + pinMan[i]) & 9;
+  for (var i = 0; i < 9; i++) pin[i] = (pinlady[i] + pinMan[i]) % 9;
   return pin;
 }
 
@@ -104,7 +116,7 @@ Widget buildResultTriangle(pin) {
   );
 }
 
-Widget buildOtherMeaning(bullshit, pin, index, title) {
+Widget buildMeanings(shits, pin, index, title) {
   String myTitle = title + ': ' + pin[index].toString() + ' rakamı';
   return Padding(
     padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
@@ -115,7 +127,7 @@ Widget buildOtherMeaning(bullshit, pin, index, title) {
           style: myStyle15,
         ),
         Text(
-          bullshit[pin[index]],
+          shits[pin[index]],
           style: myStyle12,
         ),
       ],
@@ -133,18 +145,18 @@ int howMany(List<int> arr, int numb) {
   return count;
 }
 
-Widget buildBirthdayLabel() {
+Widget buildBirthdayLabel(birthdate) {
   return Text(
-    myBirthdate[0].toString() +
-        myBirthdate[1].toString() +
+    birthdate[0].toString() +
+        birthdate[1].toString() +
         '.' +
-        myBirthdate[2].toString() +
-        myBirthdate[3].toString() +
+        birthdate[2].toString() +
+        birthdate[3].toString() +
         '.' +
-        myBirthdate[4].toString() +
-        myBirthdate[5].toString() +
-        myBirthdate[6].toString() +
-        myBirthdate[7].toString(),
+        birthdate[4].toString() +
+        birthdate[5].toString() +
+        birthdate[6].toString() +
+        birthdate[7].toString(),
     style: myStyle15,
   );
 }
