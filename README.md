@@ -1,6 +1,6 @@
 # pin_kodu (Pin kodunu hesapla)
 
-Bu uygulama Kaderin Şifresi: Pin Kodu olarak bilinen fal sistemi için bir arayüzdür. Doğum tarihinize göre pin kodunuzu hesaplar ve 9 ayrı kategoride değerlendirir. [Live Demo](pin-kodu.web.app)
+Bu uygulama Kaderin Şifresi: Pin Kodu olarak bilinen fal sistemi için bir arayüzdür. Doğum tarihinize göre pin kodunuzu hesaplar ve 9 ayrı kategoride değerlendirir. [Live Demo](https://pin-kodu.web.app/#/)
 
 Flutter ile yazıldı. Yakında markette. 
 
